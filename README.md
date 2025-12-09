@@ -1,105 +1,72 @@
------------------------------------------------------------------------
- [fetcher.py]
+Web Security Testing with MinHash
 
-****fetch_static_html(urls)****
+This project gathers DOM states from web pages (static and dynamic) and
+creates shingle-based representations for similarity estimation using
+MinHash-style hashing.
 
-Purpose: Collect HTML states from static web pages.
+Contents
+- Overview
+- Requirements
+- Quick start
+- Module guide
+- Notes on crawling and hashing
 
-Sends HTTP GET requests using requests.
+Requirements
+- Python 3.9+ (tested on macOS)
+- Google Chrome and matching ChromeDriver in PATH (for Selenium)
+- See `requirements.txt` for Python packages
 
-Uses a desktop browser User-Agent to avoid blocking.
+Quick start
+1) Create and activate a virtual environment (optional but recommended):
+   python3 -m venv .venv && source .venv/bin/activate
 
-Parses each page with BeautifulSoup.
+2) Install dependencies:
+   pip install -r requirements.txt
 
-Extracts only the <body> section (or full HTML if missing).
+3) Collect static HTML:
+   from fetcher import fetch_static_html
+   states = fetch_static_html(["https://example.com"])
 
-Appends the extracted HTML to a list of states.
+4) Crawl a dynamic site (headless Chrome):
+   from fetcher import fetch_dynamic_states
+   states = fetch_dynamic_states(
+       start_url="https://example.com",
+       max_states=10,
+       actions=[("tag name", "button"), ("id", "submit-btn")]
+   )
 
-Prints success or error messages for each URL.
+5) Generate shingles and hash:
+   from core import extract_tags, generate_shingles, universal_hash
+   tags = extract_tags(states[0])
+   shingles = generate_shingles(tags, k=3)
+   hashed = [universal_hash(seed=0, x=sh) for sh in shingles]
 
-Returns a list of captured static HTML states.
-
------------------------------------------------------------------------
-
-****fetch_dynamic_states(start_url, max_states=10, actions=None)****
-
-Purpose: Crawl dynamic, JavaScript-driven pages using Selenium and extract DOM states.
-
-Browser Setup
-
-Initializes a headless Chrome instance via Selenium.
-
-Opens the starting URL.
-
-Waits for JS execution to complete before capturing the DOM.
-
-Initial State Capture
-
-Extracts <body> HTML of the landing page.
-
-Stores the initial DOM state in the state list.
-
-Simulated User Interactions
-
-Accepts a list of actions like:
-
-(By.TAG_NAME, 'button')
-
-(By.ID, 'submit-btn')
-
-For each action:
-
-Locates the matching element.
-
-Clicks it to trigger UI changes.
-
-Waits for DOM updates.
-
-Extracts and stores the resulting DOM state (if new).
-
-Automatic Crawling (BFS)
-
-Finds all <a> elements on each loaded page.
-
-Extracts their href attributes.
-
-Adds internal links (same domain prefix) to a queue.
-
-Performs breadth-first traversal until max_states is reached.
-
-State Management
-
-Maintains a visited set to avoid reprocessing URLs.
-
-Ensures no duplicate DOM states are added.
-
-Returns up to max_states unique dynamic states.
-
------------------------------------------------------------------------
+Module guide
+[fetcher.py]
+- fetch_static_html(urls): Fetches static pages with requests, uses a
+  desktop user-agent, parses via BeautifulSoup, returns list of <body>
+  HTML (or full HTML when <body> is missing).
+- fetch_dynamic_states(start_url, max_states=10, actions=None): Uses
+  Selenium headless Chrome to load the start page, capture the DOM, and
+  then simulate clicks (actions like ("tag name", "button") or ("id",
+  "submit-btn")). Also performs BFS over same-domain links found in <a>
+  tags until max_states is reached, avoiding duplicates with a visited
+  set.
 
 [core.py]
+- class TagExtractor(html.parser.HTMLParser): Parses HTML and records
+  ordered opening tags (html, body, p, a, ...), ignoring attributes and
+  text.
+- extract_tags(html_content): Runs TagExtractor on a string of HTML.
+- generate_shingles(tags, k): Builds k-mer shingles from an ordered tag
+  list to represent DOM structure.
+- universal_hash(seed, x): MD5-based hash; seed simulates multiple
+  independent hash functions for MinHash-style signatures.
 
-****class TagExtractor(html.parser.HTMLParser)****
-
-Purpose: Parses HTML content and extracts an ordered list of all opening tag names (e.g., html, body, p, a), ignoring text content and attributes, to represent the DOM structure.
-
------------------------------------------------------------------------
-
-****def extract_tags(html_content)****
-
-Purpose: Initializes and runs TagExtractor on the provided HTML string.
-
------------------------------------------------------------------------
-
-****def generate_shingles(tags, k)****
-
-Purpose: Creates the set representation of the web page by generating $k$-mers (shingles), which are sequences of k consecutive DOM element tags19.
-
-Parameter: k   -> (self.k), the shingle size.
-
------------------------------------------------------------------------
-
-****def universal_hash(seed, x)****
-
-Purpose: A basic, parameterized hash function (using MD5) to map shingle representations to numerical values. The seed is used to simulate different, independent hash functions.
+Notes
+- Dynamic crawling depends on ChromeDriver compatibility; keep Chrome and
+  driver versions aligned.
+- Restrict BFS to your target domain to avoid unintentional wide crawls.
+- Deduplication is basic; further canonicalization may be needed for
+  noisy sites.
 

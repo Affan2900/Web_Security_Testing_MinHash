@@ -89,11 +89,24 @@ if __name__ == "__main__":
     actions = [(By.TAG_NAME, 'button')] 
     states = fetch_dynamic_states(start_url, max_states=5, actions=actions)
     
-    # Now feed to MinHashLSH 
-    detector = MinHashLSH(k=12, ell=200, tau=0.85)
-    for state in states:
-        added = detector.add_state(state)
-        print(f"Added as unique: {added}")
+    if not states:
+        print("No states fetched. Exiting.")
+        exit(0)
     
-    uniques = detector.get_unique_states()
-    print(f"Unique states found: {len(uniques)}")
+    # Test 1: With fixed hyperparameters
+    print("\n=== Test 1: Fixed Hyperparameters ===")
+    detector_fixed = MinHashLSH(k=12, ell=200, tau=0.85)
+    for state in states:
+        added = detector_fixed.add_state(state)
+        print(f"Added as unique: {added}")
+    uniques_fixed = detector_fixed.get_unique_states()
+    print(f"Unique states found (fixed params): {len(uniques_fixed)}")
+    
+    # Test 2: With adaptive hyperparameters
+    print("\n=== Test 2: Adaptive Hyperparameters ===")
+    detector_adaptive = MinHashLSH(adaptive=True, html_sample=states[0])
+    for state in states:
+        added = detector_adaptive.add_state(state)
+        print(f"Added as unique: {added}")
+    uniques_adaptive = detector_adaptive.get_unique_states()
+    print(f"Unique states found (adaptive params): {len(uniques_adaptive)}")

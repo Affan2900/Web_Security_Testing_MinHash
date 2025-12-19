@@ -1,0 +1,784 @@
+[
+  {
+    "features": {
+      "dom_size": 204,
+      "dom_depth": 16,
+      "branching_factor": 2.506172839506173,
+      "unique_tags": 22,
+      "tag_diversity": 22,
+      "tag_entropy": 3.263953967464549,
+      "js_detected": 1,
+      "form_elements": 4,
+      "ajax_indicators": 0,
+      "html_size": 50905,
+      "external_resources": 14,
+      "div_span_ratio": 9.666666666666666
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "blog",
+    "filename": "blog_5_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 1340,
+      "dom_depth": 18,
+      "branching_factor": 1.759526938239159,
+      "unique_tags": 40,
+      "tag_diversity": 40,
+      "tag_entropy": 3.526464911914514,
+      "js_detected": 1,
+      "form_elements": 10,
+      "ajax_indicators": 2,
+      "html_size": 408020,
+      "external_resources": 62,
+      "div_span_ratio": 4.731182795698925
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "blog",
+    "filename": "blog_6_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 1340,
+      "dom_depth": 18,
+      "branching_factor": 1.759526938239159,
+      "unique_tags": 40,
+      "tag_diversity": 40,
+      "tag_entropy": 3.526464911914514,
+      "js_detected": 1,
+      "form_elements": 10,
+      "ajax_indicators": 2,
+      "html_size": 408122,
+      "external_resources": 62,
+      "div_span_ratio": 4.731182795698925
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "blog",
+    "filename": "blog_6_1.html"
+  },
+  {
+    "features": {
+      "dom_size": 3847,
+      "dom_depth": 19,
+      "branching_factor": 2.1546218487394957,
+      "unique_tags": 44,
+      "tag_diversity": 44,
+      "tag_entropy": 2.7559930095026943,
+      "js_detected": 1,
+      "form_elements": 19,
+      "ajax_indicators": 1,
+      "html_size": 696811,
+      "external_resources": 53,
+      "div_span_ratio": 0.8757637474541752
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "blog",
+    "filename": "blog_6_2.html"
+  },
+  {
+    "features": {
+      "dom_size": 213,
+      "dom_depth": 22,
+      "branching_factor": 3.719298245614035,
+      "unique_tags": 28,
+      "tag_diversity": 28,
+      "tag_entropy": 3.3622492956051615,
+      "js_detected": 1,
+      "form_elements": 8,
+      "ajax_indicators": 0,
+      "html_size": 299997,
+      "external_resources": 43,
+      "div_span_ratio": 4.25
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "blog",
+    "filename": "blog_6_3.html"
+  },
+  {
+    "features": {
+      "dom_size": 215,
+      "dom_depth": 17,
+      "branching_factor": 4.36734693877551,
+      "unique_tags": 27,
+      "tag_diversity": 27,
+      "tag_entropy": 3.462222648413234,
+      "js_detected": 1,
+      "form_elements": 8,
+      "ajax_indicators": 0,
+      "html_size": 314682,
+      "external_resources": 74,
+      "div_span_ratio": 7.5
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "blog",
+    "filename": "blog_6_4.html"
+  },
+  {
+    "features": {
+      "dom_size": 461,
+      "dom_depth": 13,
+      "branching_factor": 2.875,
+      "unique_tags": 31,
+      "tag_diversity": 31,
+      "tag_entropy": 3.6504390503489668,
+      "js_detected": 1,
+      "form_elements": 19,
+      "ajax_indicators": 0,
+      "html_size": 21752,
+      "external_resources": 19,
+      "div_span_ratio": 1.0
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "documentation",
+    "filename": "documentation_11_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 711,
+      "dom_depth": 16,
+      "branching_factor": 2.191358024691358,
+      "unique_tags": 47,
+      "tag_diversity": 47,
+      "tag_entropy": 3.9277059071509544,
+      "js_detected": 1,
+      "form_elements": 9,
+      "ajax_indicators": 0,
+      "html_size": 68133,
+      "external_resources": 26,
+      "div_span_ratio": 3.0
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "documentation",
+    "filename": "documentation_12_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 49,
+      "dom_depth": 13,
+      "branching_factor": 2.4,
+      "unique_tags": 17,
+      "tag_diversity": 17,
+      "tag_entropy": 3.426564622284594,
+      "js_detected": 1,
+      "form_elements": 5,
+      "ajax_indicators": 0,
+      "html_size": 5511,
+      "external_resources": 7,
+      "div_span_ratio": 2.3333333333333335
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "ecommerce",
+    "filename": "ecommerce_1_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 1207,
+      "dom_depth": 15,
+      "branching_factor": 2.402390438247012,
+      "unique_tags": 38,
+      "tag_diversity": 38,
+      "tag_entropy": 3.3678740436335226,
+      "js_detected": 1,
+      "form_elements": 33,
+      "ajax_indicators": 3,
+      "html_size": 344002,
+      "external_resources": 31,
+      "div_span_ratio": 2.727891156462585
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "ecommerce",
+    "filename": "ecommerce_1_1.html"
+  },
+  {
+    "features": {
+      "dom_size": 1125,
+      "dom_depth": 19,
+      "branching_factor": 1.918088737201365,
+      "unique_tags": 37,
+      "tag_diversity": 37,
+      "tag_entropy": 3.4268747649836357,
+      "js_detected": 1,
+      "form_elements": 47,
+      "ajax_indicators": 1,
+      "html_size": 244084,
+      "external_resources": 57,
+      "div_span_ratio": 2.6912751677852347
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "ecommerce",
+    "filename": "ecommerce_2_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 1124,
+      "dom_depth": 19,
+      "branching_factor": 1.916382252559727,
+      "unique_tags": 37,
+      "tag_diversity": 37,
+      "tag_entropy": 3.4250121462584695,
+      "js_detected": 1,
+      "form_elements": 47,
+      "ajax_indicators": 1,
+      "html_size": 244321,
+      "external_resources": 56,
+      "div_span_ratio": 2.6912751677852347
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "ecommerce",
+    "filename": "ecommerce_2_1.html"
+  },
+  {
+    "features": {
+      "dom_size": 44,
+      "dom_depth": 8,
+      "branching_factor": 2.5294117647058822,
+      "unique_tags": 22,
+      "tag_diversity": 22,
+      "tag_entropy": 3.805022811376589,
+      "js_detected": 1,
+      "form_elements": 2,
+      "ajax_indicators": 0,
+      "html_size": 169779,
+      "external_resources": 3,
+      "div_span_ratio": 12
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 150,
+      "tau": 0.8
+    },
+    "site_type": "forum",
+    "filename": "forum_7_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 3598,
+      "dom_depth": 25,
+      "branching_factor": 1.7418886198547217,
+      "unique_tags": 103,
+      "tag_diversity": 103,
+      "tag_entropy": 4.179050795761147,
+      "js_detected": 1,
+      "form_elements": 9,
+      "ajax_indicators": 1,
+      "html_size": 1050742,
+      "external_resources": 274,
+      "div_span_ratio": 0.36325503355704697
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 150,
+      "tau": 0.8
+    },
+    "site_type": "forum",
+    "filename": "forum_7_1.html"
+  },
+  {
+    "features": {
+      "dom_size": 1473,
+      "dom_depth": 24,
+      "branching_factor": 1.7777777777777777,
+      "unique_tags": 94,
+      "tag_diversity": 94,
+      "tag_entropy": 3.8020517658457242,
+      "js_detected": 1,
+      "form_elements": 9,
+      "ajax_indicators": 1,
+      "html_size": 579623,
+      "external_resources": 80,
+      "div_span_ratio": 0.1594896331738437
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 150,
+      "tau": 0.8
+    },
+    "site_type": "forum",
+    "filename": "forum_7_2.html"
+  },
+  {
+    "features": {
+      "dom_size": 3802,
+      "dom_depth": 25,
+      "branching_factor": 1.7395881006864988,
+      "unique_tags": 113,
+      "tag_diversity": 113,
+      "tag_entropy": 4.267598430268051,
+      "js_detected": 1,
+      "form_elements": 16,
+      "ajax_indicators": 1,
+      "html_size": 1110514,
+      "external_resources": 288,
+      "div_span_ratio": 0.38562091503267976
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 150,
+      "tau": 0.8
+    },
+    "site_type": "forum",
+    "filename": "forum_7_3.html"
+  },
+  {
+    "features": {
+      "dom_size": 3152,
+      "dom_depth": 18,
+      "branching_factor": 1.969375,
+      "unique_tags": 38,
+      "tag_diversity": 38,
+      "tag_entropy": 2.905062552486986,
+      "js_detected": 1,
+      "form_elements": 891,
+      "ajax_indicators": 3,
+      "html_size": 382458,
+      "external_resources": 53,
+      "div_span_ratio": 2.4926108374384235
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 150,
+      "tau": 0.8
+    },
+    "site_type": "forum",
+    "filename": "forum_8_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 1604,
+      "dom_depth": 23,
+      "branching_factor": 1.6785340314136126,
+      "unique_tags": 36,
+      "tag_diversity": 36,
+      "tag_entropy": 3.097710772638971,
+      "js_detected": 1,
+      "form_elements": 28,
+      "ajax_indicators": 0,
+      "html_size": 293252,
+      "external_resources": 73,
+      "div_span_ratio": 7.527472527472527
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 150,
+      "tau": 0.85
+    },
+    "site_type": "news",
+    "filename": "news_3_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 3390,
+      "dom_depth": 39,
+      "branching_factor": 1.8651623555310952,
+      "unique_tags": 48,
+      "tag_diversity": 48,
+      "tag_entropy": 3.4903070261503295,
+      "js_detected": 1,
+      "form_elements": 66,
+      "ajax_indicators": 2,
+      "html_size": 5710929,
+      "external_resources": 138,
+      "div_span_ratio": 2.3267543859649122
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 150,
+      "tau": 0.85
+    },
+    "site_type": "news",
+    "filename": "news_4_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 3372,
+      "dom_depth": 39,
+      "branching_factor": 1.8562775330396475,
+      "unique_tags": 48,
+      "tag_diversity": 48,
+      "tag_entropy": 3.477847295171994,
+      "js_detected": 1,
+      "form_elements": 66,
+      "ajax_indicators": 2,
+      "html_size": 5709086,
+      "external_resources": 128,
+      "div_span_ratio": 2.324561403508772
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 150,
+      "tau": 0.85
+    },
+    "site_type": "news",
+    "filename": "news_4_1.html"
+  },
+  {
+    "features": {
+      "dom_size": 2581,
+      "dom_depth": 29,
+      "branching_factor": 1.935483870967742,
+      "unique_tags": 43,
+      "tag_diversity": 43,
+      "tag_entropy": 3.5857276161870026,
+      "js_detected": 1,
+      "form_elements": 57,
+      "ajax_indicators": 2,
+      "html_size": 4654948,
+      "external_resources": 98,
+      "div_span_ratio": 1.662162162162162
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 150,
+      "tau": 0.85
+    },
+    "site_type": "news",
+    "filename": "news_4_2.html"
+  },
+  {
+    "features": {
+      "dom_size": 2031,
+      "dom_depth": 28,
+      "branching_factor": 2.0199004975124377,
+      "unique_tags": 43,
+      "tag_diversity": 43,
+      "tag_entropy": 3.7379219975167297,
+      "js_detected": 1,
+      "form_elements": 57,
+      "ajax_indicators": 2,
+      "html_size": 4519824,
+      "external_resources": 88,
+      "div_span_ratio": 2.945945945945946
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 150,
+      "tau": 0.85
+    },
+    "site_type": "news",
+    "filename": "news_4_3.html"
+  },
+  {
+    "features": {
+      "dom_size": 3371,
+      "dom_depth": 39,
+      "branching_factor": 1.855726872246696,
+      "unique_tags": 48,
+      "tag_diversity": 48,
+      "tag_entropy": 3.477121418212225,
+      "js_detected": 1,
+      "form_elements": 66,
+      "ajax_indicators": 2,
+      "html_size": 5707961,
+      "external_resources": 127,
+      "div_span_ratio": 2.324561403508772
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 150,
+      "tau": 0.85
+    },
+    "site_type": "news",
+    "filename": "news_4_4.html"
+  },
+  {
+    "features": {
+      "dom_size": 2847,
+      "dom_depth": 35,
+      "branching_factor": 1.7154912597950573,
+      "unique_tags": 29,
+      "tag_diversity": 29,
+      "tag_entropy": 2.389945530893568,
+      "js_detected": 1,
+      "form_elements": 56,
+      "ajax_indicators": 2,
+      "html_size": 1039341,
+      "external_resources": 122,
+      "div_span_ratio": 2.2573643410852715
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "spa",
+    "filename": "spa_10_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 109,
+      "dom_depth": 8,
+      "branching_factor": 2.297872340425532,
+      "unique_tags": 17,
+      "tag_diversity": 17,
+      "tag_entropy": 2.7709093302952783,
+      "js_detected": 1,
+      "form_elements": 0,
+      "ajax_indicators": 0,
+      "html_size": 8925,
+      "external_resources": 3,
+      "div_span_ratio": 1.1363636363636365
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "spa",
+    "filename": "spa_9_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 151,
+      "dom_depth": 10,
+      "branching_factor": 2.5,
+      "unique_tags": 17,
+      "tag_diversity": 17,
+      "tag_entropy": 2.664837598149473,
+      "js_detected": 0,
+      "form_elements": 0,
+      "ajax_indicators": 0,
+      "html_size": 10953,
+      "external_resources": 2,
+      "div_span_ratio": 0.875
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "spa",
+    "filename": "spa_9_1.html"
+  },
+  {
+    "features": {
+      "dom_size": 33,
+      "dom_depth": 7,
+      "branching_factor": 1.7777777777777777,
+      "unique_tags": 15,
+      "tag_diversity": 15,
+      "tag_entropy": 3.42972101283893,
+      "js_detected": 0,
+      "form_elements": 5,
+      "ajax_indicators": 0,
+      "html_size": 1840,
+      "external_resources": 2,
+      "div_span_ratio": 9.0
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "spa",
+    "filename": "spa_9_2.html"
+  },
+  {
+    "features": {
+      "dom_size": 1057,
+      "dom_depth": 19,
+      "branching_factor": 2.070588235294118,
+      "unique_tags": 30,
+      "tag_diversity": 30,
+      "tag_entropy": 2.6785798047396163,
+      "js_detected": 1,
+      "form_elements": 14,
+      "ajax_indicators": 0,
+      "html_size": 158335,
+      "external_resources": 51,
+      "div_span_ratio": 5.764705882352941
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "spa",
+    "filename": "spa_9_3.html"
+  },
+  {
+    "features": {
+      "dom_size": 4098,
+      "dom_depth": 20,
+      "branching_factor": 2.853064066852368,
+      "unique_tags": 30,
+      "tag_diversity": 30,
+      "tag_entropy": 2.8930967355058175,
+      "js_detected": 1,
+      "form_elements": 1647,
+      "ajax_indicators": 0,
+      "html_size": 330439,
+      "external_resources": 98,
+      "div_span_ratio": 5.8789808917197455
+    },
+    "optimal_params": {
+      "k": 8,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "spa",
+    "filename": "spa_9_4.html"
+  },
+  {
+    "features": {
+      "dom_size": 1923,
+      "dom_depth": 28,
+      "branching_factor": 1.825261158594492,
+      "unique_tags": 70,
+      "tag_diversity": 70,
+      "tag_entropy": 3.9877311339175745,
+      "js_detected": 1,
+      "form_elements": 63,
+      "ajax_indicators": 0,
+      "html_size": 520933,
+      "external_resources": 108,
+      "div_span_ratio": 1.5571955719557196
+    },
+    "optimal_params": {
+      "k": 18,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "webapp",
+    "filename": "webapp_13_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 15,
+      "dom_depth": 4,
+      "branching_factor": 2.3333333333333335,
+      "unique_tags": 11,
+      "tag_diversity": 11,
+      "tag_entropy": 3.3232314287976212,
+      "js_detected": 0,
+      "form_elements": 0,
+      "ajax_indicators": 0,
+      "html_size": 1647,
+      "external_resources": 0,
+      "div_span_ratio": 0.0
+    },
+    "optimal_params": {
+      "k": 18,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "webapp",
+    "filename": "webapp_14_0.html"
+  },
+  {
+    "features": {
+      "dom_size": 430,
+      "dom_depth": 20,
+      "branching_factor": 2.0926829268292684,
+      "unique_tags": 34,
+      "tag_diversity": 34,
+      "tag_entropy": 3.2313873310051324,
+      "js_detected": 1,
+      "form_elements": 19,
+      "ajax_indicators": 1,
+      "html_size": 254258,
+      "external_resources": 13,
+      "div_span_ratio": 4.475
+    },
+    "optimal_params": {
+      "k": 18,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "webapp",
+    "filename": "webapp_14_1.html"
+  },
+  {
+    "features": {
+      "dom_size": 346,
+      "dom_depth": 20,
+      "branching_factor": 2.1974522292993632,
+      "unique_tags": 28,
+      "tag_diversity": 28,
+      "tag_entropy": 3.0656313265977677,
+      "js_detected": 1,
+      "form_elements": 14,
+      "ajax_indicators": 1,
+      "html_size": 236194,
+      "external_resources": 13,
+      "div_span_ratio": 5.033333333333333
+    },
+    "optimal_params": {
+      "k": 18,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "webapp",
+    "filename": "webapp_14_2.html"
+  },
+  {
+    "features": {
+      "dom_size": 515,
+      "dom_depth": 15,
+      "branching_factor": 2.1872340425531913,
+      "unique_tags": 39,
+      "tag_diversity": 39,
+      "tag_entropy": 3.9631622722283715,
+      "js_detected": 1,
+      "form_elements": 3,
+      "ajax_indicators": 0,
+      "html_size": 100751,
+      "external_resources": 20,
+      "div_span_ratio": 6.857142857142857
+    },
+    "optimal_params": {
+      "k": 18,
+      "ell": 100,
+      "tau": 0.7
+    },
+    "site_type": "webapp",
+    "filename": "webapp_14_3.html"
+  }
+]

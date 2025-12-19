@@ -38,7 +38,33 @@ def universal_hash(seed, x):
     return int(m.hexdigest(), 16)
 
 class MinHashLSH:
-    def __init__(self, k=12, ell=200, tau=0.85):
+    def __init__(self, k=12, ell=200, tau=0.85, adaptive=False, html_sample=None):
+        """
+        Initialize MinHash LSH detector.
+        
+        Args:
+            k (int): Shingle size
+            ell (int): Number of hash functions (sketch size)
+            tau (float): Jaccard similarity threshold
+            adaptive (bool): If True, use ML model to select hyperparameters
+            html_sample (str): Sample HTML for adaptive parameter selection
+        """
+        if adaptive and html_sample:
+            try:
+                from hyperparameter_optimizer import predict_hyperparameters
+                k, ell, tau = predict_hyperparameters(html_sample)
+                print(f"[Adaptive Mode] ML-predicted hyperparameters: k={k}, ell={ell}, tau={tau:.2f}")
+            except FileNotFoundError as e:
+                print(f"\n[ERROR] Adaptive mode requires trained ML model!")
+                print(f"Please run the training pipeline:")
+                print(f"  1. python scrape_websites.py")
+                print(f"  2. python collect_training_data.py")
+                print(f"  3. python train_bayesian_model.py\n")
+                raise
+            except Exception as e:
+                print(f"[ERROR] Adaptive mode failed: {e}")
+                raise
+        
         self.k = k  # Shingle size
         self.ell = ell  # Number of hash functions (sketch size)
         self.tau = tau  # Jaccard similarity threshold
@@ -111,9 +137,18 @@ if __name__ == "__main__":
         "<html><body><div><ul><li>Item1</li><li>Item2</li></ul></div></body></html>",  # Different
     ]
 
-    detector = MinHashLSH(k=3, ell=10, tau=0.8)  # Small params for demo; use paper's in production
+    # Test with default (hardcoded) parameters
+    print("\n=== Test 1: Default Parameters ===")
+    detector = MinHashLSH(k=3, ell=10, tau=0.8)  # Small params for demo
     for html in sample_htmls:
         added = detector.add_state(html)
+        print(f"Added as unique: {added}")
+    
+    # Test with adaptive parameters
+    print("\n=== Test 2: Adaptive Parameters ===")
+    detector_adaptive = MinHashLSH(adaptive=True, html_sample=sample_htmls[0])
+    for html in sample_htmls:
+        added = detector_adaptive.add_state(html)
         print(f"Added as unique: {added}")
 
     uniques = detector.get_unique_states()

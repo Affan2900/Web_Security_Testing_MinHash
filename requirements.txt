@@ -1,4 +1,4 @@
 requests==2.32.3
 beautifulsoup4==4.12.3
-requests
 selenium
+streamlit==1.40.2

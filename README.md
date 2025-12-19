@@ -7,7 +7,7 @@ MinHash-style hashing.
 Contents
 - Overview
 - Requirements
-- Quick start
+- Quick start (backend + Streamlit frontend)
 - Module guide
 - Notes on crawling and hashing
 
@@ -23,26 +23,30 @@ Quick start
 2) Install dependencies:
    pip install -r requirements.txt
 
-3) Collect static HTML:
-   from fetcher import fetch_static_html
-   states = fetch_static_html(["https://example.com"])
+3) Run the Streamlit UI:
+   streamlit run frontend/app.py
 
-4) Crawl a dynamic site (headless Chrome):
-   from fetcher import fetch_dynamic_states
-   states = fetch_dynamic_states(
-       start_url="https://example.com",
-       max_states=10,
-       actions=[("tag name", "button"), ("id", "submit-btn")]
-   )
+4) Use the UI to:
+   - Static mode: enter one or more URLs (comma-separated) and fetch.
+   - Dynamic mode: enter a start URL, set max states, fetch via Selenium
+     (requires ChromeDriver).
 
-5) Generate shingles and hash:
-   from core import extract_tags, generate_shingles, universal_hash
-   tags = extract_tags(states[0])
-   shingles = generate_shingles(tags, k=3)
-   hashed = [universal_hash(seed=0, x=sh) for sh in shingles]
+Backend (programmatic) usage
+from backend.fetcher import fetch_static_html, fetch_dynamic_states
+from backend.core import extract_tags, generate_shingles, universal_hash, MinHashLSH
+
+states = fetch_static_html(["https://example.com"])
+tags = extract_tags(states[0])
+shingles = generate_shingles(tags, k=3)
+hashed = [universal_hash(seed=0, x=sh) for sh in shingles]
+
+detector = MinHashLSH(k=12, ell=200, tau=0.85)
+for state in states:
+    detector.add_state(state)
+unique_states = detector.get_unique_states()
 
 Module guide
-[fetcher.py]
+[backend/fetcher.py]
 - fetch_static_html(urls): Fetches static pages with requests, uses a
   desktop user-agent, parses via BeautifulSoup, returns list of <body>
   HTML (or full HTML when <body> is missing).
@@ -53,7 +57,7 @@ Module guide
   tags until max_states is reached, avoiding duplicates with a visited
   set.
 
-[core.py]
+[backend/core.py]
 - class TagExtractor(html.parser.HTMLParser): Parses HTML and records
   ordered opening tags (html, body, p, a, ...), ignoring attributes and
   text.
@@ -62,6 +66,8 @@ Module guide
   list to represent DOM structure.
 - universal_hash(seed, x): MD5-based hash; seed simulates multiple
   independent hash functions for MinHash-style signatures.
+- MinHashLSH: Maintains sketches and performs duplicate detection /
+  deduplication via approximate Jaccard similarity.
 
 Notes
 - Dynamic crawling depends on ChromeDriver compatibility; keep Chrome and

@@ -3,8 +3,10 @@ import hashlib
 import random
 from collections import defaultdict
 
+
 class TagExtractor(html.parser.HTMLParser):
     """Extracts sequence of opening tag names from HTML in document order."""
+
     def __init__(self):
         super().__init__()
         self.tags = []  # List to store opening tags
@@ -15,11 +17,13 @@ class TagExtractor(html.parser.HTMLParser):
     def handle_startendtag(self, tag, attrs):
         self.tags.append(tag.lower())  # Treat self-closing as start
 
+
 def extract_tags(html_content):
     """Parse HTML and return list of opening tags."""
     parser = TagExtractor()
     parser.feed(html_content)
     return parser.tags
+
 
 def generate_shingles(tags, k):
     """Generate set of k-shingles (tuples of k consecutive tags)."""
@@ -27,23 +31,29 @@ def generate_shingles(tags, k):
         return set()
     shingles = set()
     for i in range(len(tags) - k + 1):
-        shingle = tuple(tags[i:i + k])
+        shingle = tuple(tags[i : i + k])
         shingles.add(shingle)
     return shingles
+
 
 def universal_hash(seed, x):
     """Simple universal hash using MD5 with seed."""
     m = hashlib.md5()
-    m.update(str(seed).encode('utf-8') + str(x).encode('utf-8'))
+    m.update(str(seed).encode("utf-8") + str(x).encode("utf-8"))
     return int(m.hexdigest(), 16)
+
 
 class MinHashLSH:
     def __init__(self, k=12, ell=200, tau=0.85):
         self.k = k  # Shingle size
         self.ell = ell  # Number of hash functions (sketch size)
         self.tau = tau  # Jaccard similarity threshold
-        self.hash_functions = [random.randint(0, 2**32 - 1) for _ in range(ell)]  # Seeds for hash funcs
-        self.hash_tables = [defaultdict(set) for _ in range(ell)]  # LSH tables: list of dict(value -> set(ids))
+        self.hash_functions = [
+            random.randint(0, 2**32 - 1) for _ in range(ell)
+        ]  # Seeds for hash funcs
+        self.hash_tables = [
+            defaultdict(set) for _ in range(ell)
+        ]  # LSH tables: list of dict(value -> set(ids))
         self.unique_states = {}  # id -> original html_content
         self.next_id = 0
 
@@ -51,7 +61,7 @@ class MinHashLSH:
         """Compute MinHash sketch: list of ell min-hash values."""
         sketch = []
         for i in range(self.ell):
-            min_val = float('inf')
+            min_val = float("inf")
             for shingle in shingles:
                 h_val = universal_hash(self.hash_functions[i], shingle)
                 if h_val < min_val:
@@ -102,7 +112,7 @@ class MinHashLSH:
         """Return list of unique HTML contents."""
         return list(self.unique_states.values())
 
-# Example usage
+
 if __name__ == "__main__":
     # Sample HTML states (replace with your real pages)
     sample_htmls = [
@@ -118,3 +128,4 @@ if __name__ == "__main__":
 
     uniques = detector.get_unique_states()
     print(f"Unique states found: {len(uniques)}")
+

@@ -5,7 +5,7 @@ Finds optimal hyperparameters for each scraped website using grid search.
 
 import json
 import os
-from core import MinHashLSH, generate_shingles, extract_tags
+from backend.core import MinHashLSH, generate_shingles, extract_tags
 from feature_extractor import extract_features
 import numpy as np
 from itertools import product
@@ -32,7 +32,9 @@ def evaluate_parameters(html_pages, k, ell, tau):
     Returns:
         dict: Metrics including coverage, redundancy, unique_count
     """
-    detector = MinHashLSH(k=k, ell=ell, tau=tau)
+    detector = MinHashLSH(k=k, ell=ell, tau=tau,
+                         dynamic_threshold=False,
+                         context_aware=False)
     
     unique_count = 0
     duplicate_count = 0

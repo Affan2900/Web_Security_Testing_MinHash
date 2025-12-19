@@ -26,21 +26,50 @@ class HyperparameterOptimizer:
     Requires trained models - no fallback.
     """
     
-    def __init__(self, model_path='models/bayesian_optimizer.pkl'):
+    def __init__(self, model_path=None):
         """
         Initialize the optimizer and load trained models.
         
         Args:
-            model_path (str): Path to saved trained models
+            model_path (str): Path to saved trained models. If None, auto-detects from project root.
         """
+        # Auto-detect model path if not provided
+        if model_path is None:
+            project_root = os.path.dirname(os.path.abspath(__file__))
+            
+            possible_paths = [
+                'models/bayesian_optimizer.pkl',  
+                os.path.join(project_root, 'models', 'bayesian_optimizer.pkl'),  
+                os.path.abspath('models/bayesian_optimizer.pkl'),  
+            ]
+            
+            model_path = None
+            for path in possible_paths:
+                abs_path = os.path.abspath(path) if not os.path.isabs(path) else path
+                if os.path.exists(abs_path):
+                    model_path = abs_path
+                    break
+            
+            if model_path is None:
+                # Show absolute paths in error message
+                abs_paths = [os.path.abspath(p) if not os.path.isabs(p) else p for p in possible_paths]
+                raise FileNotFoundError(
+                    f"Trained model not found. Searched in:\n" +
+                    "\n".join(f"  - {p}" for p in abs_paths) +
+                    f"\n\nPlease run the training pipeline:\n"
+                    f"  1. python scrape_websites.py\n"
+                    f"  2. python collect_training_data.py\n"
+                    f"  3. python train_bayesian_model.py"
+                )
+        
         self.model_path = model_path
         self.models = {'k': None, 'ell': None, 'tau': None}
         self.is_trained = False
         
-        # Load models (required)
-        if not os.path.exists(model_path):
+        # Verify model exists
+        if not os.path.exists(self.model_path):
             raise FileNotFoundError(
-                f"Trained model not found at: {model_path}\n"
+                f"Trained model not found at: {self.model_path}\n"
                 f"Please run the training pipeline:\n"
                 f"  1. python scrape_websites.py\n"
                 f"  2. python collect_training_data.py\n"
@@ -88,9 +117,41 @@ class HyperparameterOptimizer:
         """Load trained models from disk."""
         try:
             with open(self.model_path, 'rb') as f:
-                self.models = pickle.load(f)
+                # Try loading with compatibility mode for NumPy version mismatches
+                try:
+                    self.models = pickle.load(f)
+                except (ValueError, TypeError) as e:
+                    error_msg = str(e)
+                    if 'BitGenerator' in error_msg or 'MT19937' in error_msg:
+                        # NumPy version compatibility issue - try workaround
+                        f.seek(0)  # Reset file pointer
+                        try:
+                            import pickle5
+                            self.models = pickle5.load(f)
+                        except (ImportError, Exception):
+                            # If pickle5 not available, raise informative error
+                            raise RuntimeError(
+                                f"\n{'='*60}\n"
+                                f"NumPy Version Compatibility Issue\n"
+                                f"{'='*60}\n"
+                                f"Error: {e}\n\n"
+                                f"The model was saved with a different NumPy version.\n"
+                                f"Current NumPy version: {np.__version__}\n\n"
+                                f"SOLUTION: Retrain the model with current NumPy version:\n"
+                                f"  1. python scrape_websites.py\n"
+                                f"  2. python collect_training_data.py\n"
+                                f"  3. python train_bayesian_model.py\n\n"
+                                f"Alternatively, install compatible NumPy version or use pickle5:\n"
+                                f"  pip install pickle5\n"
+                                f"{'='*60}\n"
+                            )
+                    else:
+                        raise
             self.is_trained = True
             print(f"[ML Model] Loaded trained Bayesian models from: {self.model_path}")
+        except RuntimeError:
+            # Re-raise our custom errors
+            raise
         except Exception as e:
             raise RuntimeError(f"Failed to load models: {e}")
     
@@ -116,13 +177,13 @@ class HyperparameterOptimizer:
 
 
 # Convenience function for quick usage
-def predict_hyperparameters(html_content, model_path='models/bayesian_optimizer.pkl'):
+def predict_hyperparameters(html_content, model_path=None):
     """
     Convenience function to predict hyperparameters.
     
     Args:
         html_content (str): HTML string to analyze
-        model_path (str): Path to trained model
+        model_path (str): Path to trained model. If None, auto-detects from project root.
         
     Returns:
         tuple: (k, ell, tau) predicted hyperparameter values

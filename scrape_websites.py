@@ -17,18 +17,16 @@ from feature_extractor import extract_features
 WEBSITES = [
     # E-commerce
     {'url': 'https://www.amazon.com', 'type': 'ecommerce', 'max_pages': 5},
-    {'url': 'https://www.etsy.com', 'type': 'ecommerce', 'max_pages': 5},
+   
     
     # News/Media
     {'url': 'https://www.bbc.com/news', 'type': 'news', 'max_pages': 5},
-    {'url': 'https://www.cnn.com', 'type': 'news', 'max_pages': 5},
+ 
     
     # Blogs/Content
-    {'url': 'https://medium.com', 'type': 'blog', 'max_pages': 5},
     {'url': 'https://wordpress.com', 'type': 'blog', 'max_pages': 5},
     
     # Forums/Social
-    {'url': 'https://www.reddit.com', 'type': 'forum', 'max_pages': 5},
     {'url': 'https://stackoverflow.com', 'type': 'forum', 'max_pages': 5},
     
     # SPAs/Dynamic
@@ -131,7 +129,9 @@ def scrape_dynamic_website(url, max_pages=5):
         time.sleep(3)  # Wait for JS
         
         # Get initial state
-        html_pages.append(driver.page_source)
+        initial_html = driver.page_source
+        if initial_html:
+            html_pages.append(initial_html)
         
         # Try to navigate and get more states
         for i in range(max_pages - 1):
@@ -141,7 +141,9 @@ def scrape_dynamic_website(url, max_pages=5):
                 if clickable:
                     clickable[i % len(clickable)].click()
                     time.sleep(2)
-                    html_pages.append(driver.page_source)
+                    page_html = driver.page_source
+                    if page_html:  # Only add if not None
+                        html_pages.append(page_html)
             except:
                 break
                 
@@ -184,6 +186,9 @@ def scrape_all_websites(output_dir='training_data/raw_html'):
         
         print(f"  Collected {len(html_pages)} pages")
         
+        # Filter out None values and empty strings
+        html_pages = [html for html in html_pages if html and isinstance(html, str) and html.strip()]
+        
         # Store by type
         if site_type not in all_data:
             all_data[site_type] = []
@@ -194,10 +199,11 @@ def scrape_all_websites(output_dir='training_data/raw_html'):
         os.makedirs(site_dir, exist_ok=True)
         
         for j, html in enumerate(html_pages):
-            filename = f"{site_type}_{i}_{j}.html"
-            filepath = os.path.join(site_dir, filename)
-            with open(filepath, 'w', encoding='utf-8') as f:
-                f.write(html)
+            if html and isinstance(html, str):  # Double check before writing
+                filename = f"{site_type}_{i}_{j}.html"
+                filepath = os.path.join(site_dir, filename)
+                with open(filepath, 'w', encoding='utf-8') as f:
+                    f.write(html)
     
     return all_data
 

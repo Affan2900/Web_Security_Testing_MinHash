@@ -76,3 +76,14 @@ Notes
 - Deduplication is basic; further canonicalization may be needed for
   noisy sites.
 
+
+
+
+[Using ML mode]
+# Run once to train models
+python scrape_websites.py
+python collect_training_data.py  
+python train_bayesian_model.py
+
+# Then use ML-based adaptive mode
+detector = MinHashLSH(adaptive=True, html_sample=html)
